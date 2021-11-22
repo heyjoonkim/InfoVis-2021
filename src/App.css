@@ -1,0 +1,52 @@
+
+
+#container{
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+#scatter_plot{
+    width:30%;
+    height:350px;
+    float:left;
+    background-color: aquamarine;
+    margin:5px;
+}
+
+#table_plot{
+    width:45%;
+    height:350px;
+    float:left;
+    background-color:darkseagreen;
+    margin:5px;
+}
+
+#input_plot{
+    width:25%;
+    height:350px;
+    float:left;
+    background-color:lightblue;
+    margin:5px;
+}
+
+#bottom_plot{
+    width:50%;
+    height:300px;
+    float:left;
+    background-color:lightpink;
+    margin:5px;
+}
+
+#control_panel{
+    background-color :cadetblue;
+    width:80%;
+    height:min-content;
+    margin:5px;
+}
+
+#control_text{
+    text-align: center;
+    margin:auto;
+}

@@ -1,0 +1,82 @@
+[
+	{
+		"sentence" : "sentence 1 sentence 1 sentence 1 sentence 1 sentence 1 sentence 1 sentence 1 sentence 1 sentence 1 sentence 1 sentence 1",
+		"label" : "1",
+		"tsne" : {
+			"x" : "1",
+			"y" : "2"
+		}
+	},
+	{
+		"sentence" : "sentence 2",
+		"label" : "0",
+		"tsne" : {
+			"x" : "-1",
+			"y" : "-6"
+		}
+	},
+	{
+		"sentence" : "sentence 3",
+		"label" : "1",
+		"tsne" : {
+			"x" : "0",
+			"y" : "2"
+		}
+	},
+	{
+		"sentence" : "sentence 4",
+		"label" : "0",
+		"tsne" : {
+			"x" : "-1",
+			"y" : "2"
+		}
+	},
+	{
+		"sentence" : "sentence 5",
+		"label" : "0",
+		"tsne" : {
+			"x" : "-1",
+			"y" : "7"
+		}
+	},
+	{
+		"sentence" : "sentence 6",
+		"label" : "1",
+		"tsne" : {
+			"x" : "5",
+			"y" : "3"
+		}
+	},
+	{
+		"sentence" : "sentence 7",
+		"label" : "0",
+		"tsne" : {
+			"x" : "-4",
+			"y" : "-2"
+		}
+	},
+	{
+		"sentence" : "sentence 8",
+		"label" : "0",
+		"tsne" : {
+			"x" : "2",
+			"y" : "1"
+		}
+	},
+	{
+		"sentence" : "sentence 9",
+		"label" : "1",
+		"tsne" : {
+			"x" : "4",
+			"y" : "1"
+		}
+	},
+	{
+		"sentence" : "sentence 10",
+		"label" : "0",
+		"tsne" : {
+			"x" : "-2",
+			"y" : "-2"
+		}
+	}
+]
