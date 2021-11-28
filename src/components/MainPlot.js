@@ -105,11 +105,9 @@ const Mainplot = (props) => {
             </div>
             <div id="container">
                 <div id="bottom_plot">
-                    <InputPlot/>
                 </div>
 
                 <div id="bottom_plot">
-                    <InputPlot/>
                 </div>
             </div>
         </div>
