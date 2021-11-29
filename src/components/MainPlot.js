@@ -5,6 +5,8 @@ import "../App.css";
 import ControlPanel from "./ControlPanel";
 import TablePlot from "./TablePlot";
 import InputPlot from "./InputPlot";
+import AttentionPlot from "./AttentionPlot";
+import BarPlot from "./BarPlot";
 
 const Mainplot = (props) => {
 
@@ -17,7 +19,7 @@ const Mainplot = (props) => {
     const [dataset, setDataset] = useState(props.dataset[0]);
     const [model, setModel] = useState(props.model[0]);
     const [embedding, setEmbedding] = useState(props.embedding[0]);
-    const [selectedData, setSelectedData] = useState(props.data);
+    const [selectedData, setSelectedData] = useState(props.data['embeddings']);
 
     /*
     최초실행시 출력하는 화면
@@ -26,8 +28,10 @@ const Mainplot = (props) => {
         const splot = d3.select(splotSvg.current);
         // set of labels
         var labelSet = new Set();
+        var embeddingsData = props.data['embeddings']
+        var attentions = props.data['attentions']
         // make data
-        props.data.forEach(d => {
+        embeddingsData.forEach(d => {
             d.x = parseFloat(d["tsne"]["x"]);
             d.y = parseFloat(d["tsne"]["y"]);
             d.label = parseInt(d["label"]);
@@ -41,22 +45,22 @@ const Mainplot = (props) => {
         // scatter plot x-scale
         let xScale = d3.scaleLinear()
                         .domain([
-                            d3.min(props.data, d => d.x),
-                            d3.max(props.data, d => d.x)
+                            d3.min(embeddingsData, d => d.x),
+                            d3.max(embeddingsData, d => d.x)
                         ])
                         .range([0, size]);
         // scatter plot y-scale
         let yScale = d3.scaleLinear()
                         .domain([
-                            d3.min(props.data, d => d.y),
-                            d3.max(props.data, d => d.y)
+                            d3.min(embeddingsData, d => d.y),
+                            d3.max(embeddingsData, d => d.y)
                         ])
                         .range([size, 0]);
         // initial circles
         splot.append('g')
             .attr('transform', `translate(${margin}, ${margin})`)
             .selectAll('circle')
-            .data(props.data)
+            .data(embeddingsData)
             .enter()
             .append('circle')
             .attr('cx', d => xScale(d.x))
@@ -105,9 +109,14 @@ const Mainplot = (props) => {
             </div>
             <div id="container">
                 <div id="bottom_plot">
+                    <BarPlot
+                        data={props.data['topk']}
+                    />
                 </div>
-
                 <div id="bottom_plot">
+                    <AttentionPlot
+                        attentions={props.data['attentions']}
+                    />
                 </div>
             </div>
         </div>
