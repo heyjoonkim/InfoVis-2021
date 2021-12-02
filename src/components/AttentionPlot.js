@@ -57,6 +57,7 @@ const AttentionPlot = (props) => {
     최초실행시 출력하는 화면
     */
     useEffect(() => {
+        d3.select(splotSvg.current).selectAll("*").remove()
 
         let xScale_top = d3.scaleLinear()
                         .domain([0, wordLength * interval])
