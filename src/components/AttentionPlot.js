@@ -55,7 +55,7 @@ const AttentionPlot = (props) => {
 
     /*
     최초실행시 출력하는 화면
-    */
+    */   
     useEffect(() => {
         d3.select(splotSvg.current).selectAll("*").remove()
 
@@ -68,7 +68,7 @@ const AttentionPlot = (props) => {
                         .range([0, 600])
 
         let yScale = d3.scaleLinear()
-                        .domain([0, fixed_height])
+                        .domain([0, fixed_height + 1])
                         .range([200, 0])
         
         const xAxis_top = d3.axisBottom(xScale_top).tickFormat(function(d){
@@ -89,11 +89,11 @@ const AttentionPlot = (props) => {
         
         svg.append('g')
             .attr('transform', `translate(${100}, ${0})`)
-            .call(xAxis_top)  
+            .call(xAxis_top).attr('stroke-width', 0)
         svg.append('g')
             .attr('transform', `translate( ${100}, ${200})`)
-            .call(xAxis_bot)
-
+            .call(xAxis_bot).attr('stroke-width', 0)
+            
         lines_svg.selectAll('line')
             .attr('transform', `translate( ${0}, ${0})`)
             .data(data)
