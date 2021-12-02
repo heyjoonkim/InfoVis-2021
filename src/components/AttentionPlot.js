@@ -7,7 +7,7 @@ const AttentionPlot = (props) => {
     
     const splotSvg = useRef(null);
     const barplotSvg = useRef(null);
-    const svgSize = 100 * 2 + 100;
+    const svgSize = 300 * 2 + 100;
 
     const interval = 1000;
 
@@ -60,12 +60,12 @@ const AttentionPlot = (props) => {
         d3.select(splotSvg.current).selectAll("*").remove()
 
         let xScale_top = d3.scaleLinear()
-                        .domain([0, wordLength * interval])
-                        .range([0, 200])
+                        .domain([0, (wordLength-0.5) * interval])
+                        .range([0, 600])
 
         let xScale_bot = d3.scaleLinear()
-                        .domain([0, wordLength * interval])
-                        .range([0, 200])
+                        .domain([0, (wordLength-0.5) * interval])
+                        .range([0, 600])
 
         let yScale = d3.scaleLinear()
                         .domain([0, fixed_height])
@@ -74,12 +74,12 @@ const AttentionPlot = (props) => {
         const xAxis_top = d3.axisBottom(xScale_top).tickFormat(function(d){
             var index = d / interval;
             return tokens['input_tokens'][index];
-        });
+        }).tickSize(0);
 
         const xAxis_bot = d3.axisBottom(xScale_bot).tickFormat(function(d){
             var index = d / interval;
             return tokens['prompt_tokens'][index];
-        });
+        }).tickSize(0);
 
 
         const yAxis = d3.axisLeft(yScale)          
