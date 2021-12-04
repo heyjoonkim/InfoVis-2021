@@ -1,6 +1,7 @@
 
 # Created by https://www.toptal.com/developers/gitignore/api/react,visualstudiocode,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=react,visualstudiocode,macos
+package-lock.json
 
 ### macOS ###
 # General
