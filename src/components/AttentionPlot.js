@@ -108,7 +108,7 @@ const AttentionPlot = (props) => {
 
             console.log('@@ DONE @@');
 
-    }, [data]);
+    }, [tokens,data]);
 
     
 
