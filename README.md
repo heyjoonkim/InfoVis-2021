@@ -7,6 +7,7 @@
 yarn add d3
 yarn add react-select
 yarn add material-table @material-ui/core
+yarn add axios
 ```
 
 ### start
@@ -14,7 +15,32 @@ yarn add material-table @material-ui/core
 yarn start
 ```
 
-### 현재 상태
+## API (서버에서 처리할 때 참고해주세요)
+
+1. "Change Settings" button을 눌렀을 때 : localhost/options (POST 요청)
+    - Sample Dataset (임시) : "SST-2", "RTE"
+    - Model (임시) : "bert-base-cased", "albert-xxlarge-v2"
+    - Embedding method (임시) : "mask", "cls", "mean", "max"
+    ```
+    # API 예시
+    {
+      "dataset" : "SST-2",
+      "model" : "bert-base-cased",
+      "embedding" : "mask"
+    }
+    ```
+2. "Apply" button을 눌렀을 때 : localhost/apply (POST 요청)
+
+    - 
+    ```
+    # API 예시
+    {
+      
+    }
+    ```
+---
+
+## 현재 상태
 - 2021 / 11 / 29 (월)
 ![image](https://user-images.githubusercontent.com/29649894/143819563-3737c1a8-2042-4a84-9fed-c3d0384c5c6c.png)
   - TODO

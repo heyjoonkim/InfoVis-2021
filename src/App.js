@@ -10,6 +10,7 @@ function App() {
   const dataset = ["SST-2", "RTE"];
   const model = ["bert-base-uncased", "albert-xxlarge-v2"];
   const embedding  = ['mask', 'cls', 'mean', 'max'];
+  const host='localhost'
 
   return (
     <div className="App">
@@ -20,6 +21,7 @@ function App() {
           dataset={dataset}
           model={model}
           embedding={embedding}
+          host={host}
         />
       </div>
     </div>

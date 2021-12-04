@@ -19,7 +19,11 @@ const Mainplot = (props) => {
     const [dataset, setDataset] = useState(props.dataset[0]);
     const [model, setModel] = useState(props.model[0]);
     const [embedding, setEmbedding] = useState(props.embedding[0]);
-    const [selectedData, setSelectedData] = useState(props.data['embeddings']);
+
+    // for scatter plot & table
+    const [embeddingsData, setEmbeddingsData] = useState(props.data['embeddings']);
+    const [topk, setTopk] = useState(props.data['topk']);
+    const [attentions, setAttentions] = useState(props.data['attentions']);
 
     /*
     최초실행시 출력하는 화면
@@ -28,7 +32,6 @@ const Mainplot = (props) => {
         const splot = d3.select(splotSvg.current);
         // set of labels
         var labelSet = new Set();
-        var embeddingsData = props.data['embeddings']
         var attentions = props.data['attentions']
         // make data
         embeddingsData.forEach(d => {
@@ -77,7 +80,7 @@ const Mainplot = (props) => {
                 circles.forEach()
             });
 
-    }, []);
+    }, [embeddingsData]);
 
 
     return (
@@ -85,11 +88,12 @@ const Mainplot = (props) => {
             <div class="splotContainer" id="control_panel">
                 <ControlPanel
                     dataset={props.dataset}
-                    setDataset={setDataset}
                     model={props.model}
-                    setModel={setModel}
                     embedding={props.embedding}
-                    setEmbedding={setEmbedding}
+                    host={props.host}
+                    setData={setEmbeddingsData}
+                    setTopk={setTopk}
+                    setAttentions={setAttentions}
                 />
             </div>
             <div id="container">
@@ -99,8 +103,8 @@ const Mainplot = (props) => {
                 </div>
                 <div id="table_plot">
                     <TablePlot
-                        data={selectedData}
-                        setData={setSelectedData}
+                        data={embeddingsData}
+                        setData={setEmbeddingsData}
                     />
                 </div>
                 <div id="input_plot">
@@ -110,12 +114,12 @@ const Mainplot = (props) => {
             <div id="container">
                 <div id="bottom_plot">
                     <BarPlot
-                        data={props.data['topk']}
+                        data={topk}
                     />
                 </div>
                 <div id="bottom_plot">
                     <AttentionPlot
-                        attentions={props.data['attentions']}
+                        attentions={attentions}
                     />
                 </div>
             </div>
