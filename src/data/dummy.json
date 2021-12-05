@@ -1,173 +1,2294 @@
 {
-	"embeddings" : [
+	"embeddings": [
 		{
-			"sentence" : "sentence 1 sentence 1 sentence 1 sentence 1 sentence 1 sentence 1 sentence 1 sentence 1 sentence 1 sentence 1 sentence 1",
-			"label" : "1",
-			"tsne" : {
-				"x" : "1",
-				"y" : "2"
+			"sentence": "sentence 1 sentence 1 sentence 1 sentence 1 sentence 1 sentence 1 sentence 1 sentence 1 sentence 1 sentence 1 sentence 1",
+			"label": "1",
+			"tsne": {
+				"x": "1",
+				"y": "2"
+			},
+			"topk": [
+				{
+					"token": "sent1_candidate1",
+					"score": 0.4
+				},
+				{
+					"token": "sent1_candidate2",
+					"score": 0.3
+				},
+				{
+					"token": "sent1_candidate3",
+					"score": 0.2
+				},
+				{
+					"token": "sent1_candidate4",
+					"score": 0.09
+				},
+				{
+					"token": "sent1_candidate5",
+					"score": 0.01
+				},
+				{
+					"token": "sent1_candidate6",
+					"score": 0.01
+				},
+				{
+					"token": "sent1_candidate7",
+					"score": 0.01
+				},
+				{
+					"token": "sent1_candidate8",
+					"score": 0.01
+				},
+				{
+					"token": "sent1_candidate9",
+					"score": 0.01
+				},
+				{
+					"token": "sent1_candidate10",
+					"score": 0.01
+				}
+			],
+			"attentions": {
+				"input_tokens": [
+					"sent1_input_token_1",
+					"sent1_input_token_2",
+					"sent1_input_token_3",
+					"sent1_input_token_4"
+				],
+				"prompt_tokens": [
+					"sent1_prompt_token_1",
+					"sent1_prompt_token_2",
+					"sent1_prompt_token_3",
+					"sent1_prompt_token_4"
+				],
+				"num_layer": 12,
+				"0": [
+					{
+						"input_pos": 0,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 0.5
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 0.3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 0.5
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 2,
+						"attn_value": 0.2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 3,
+						"attn_value": 0.1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 0,
+						"attn_value": 0.4
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 1,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 3,
+						"attn_value": 0.6
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 0,
+						"attn_value": 0.6
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 1,
+						"attn_value": 0.2
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 2,
+						"attn_value": 0.8
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 2
+					}
+				],
+				"1": [
+					{
+						"input_pos": 0,
+						"prompt_pos": 0,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 2,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 3,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 0,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 1,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 3,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 0,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 1,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 2,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 2
+					}
+				]
 			}
 		},
 		{
-			"sentence" : " sentence 2 sentence 2 sentence 2 sentence 2 sentence 2 sentence 2 sentence 2 sentence 2 sentence 2 sentence 2 sentence 2 sentence 2 ",
-			"label" : "0",
-			"tsne" : {
-				"x" : "-1",
-				"y" : "-6"
+			"sentence": " sentence 2 sentence 2 sentence 2 sentence 2 sentence 2 sentence 2 sentence 2 sentence 2 sentence 2 sentence 2 sentence 2 sentence 2 ",
+			"label": "0",
+			"tsne": {
+				"x": "-1",
+				"y": "-6"
+			},
+			"topk": [
+				{
+					"token": "sent2_candidate1",
+					"score": 0.5
+				},
+				{
+					"token": "sent2_candidate2",
+					"score": 0.1
+				},
+				{
+					"token": "sent2_candidate3",
+					"score": 0.09
+				},
+				{
+					"token": "sent2_candidate4",
+					"score": 0.09
+				},
+				{
+					"token": "sent2_candidate5",
+					"score": 0.01
+				},
+				{
+					"token": "sent2_candidate6",
+					"score": 0.01
+				},
+				{
+					"token": "sent2_candidate7",
+					"score": 0.01
+				},
+				{
+					"token": "sent2_candidate8",
+					"score": 0.004
+				},
+				{
+					"token": "sent2_candidate9",
+					"score": 0.003
+				},
+				{
+					"token": "sent2_candidate10",
+					"score": 0.002
+				}
+			],
+			"attentions": {
+				"input_tokens": [
+					"sent2_input_token_1",
+					"sent2_input_token_2",
+					"sent2_input_token_3",
+					"sent2_input_token_4"
+				],
+				"prompt_tokens": [
+					"sent2_prompt_token_1",
+					"sent2_prompt_token_2",
+					"sent2_prompt_token_3",
+					"sent2_prompt_token_4"
+				],
+				"num_layer": 12,
+				"0": [
+					{
+						"input_pos": 0,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 0.5
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 0.3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 0.5
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 2,
+						"attn_value": 0.2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 3,
+						"attn_value": 0.1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 0,
+						"attn_value": 0.4
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 1,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 3,
+						"attn_value": 0.6
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 0,
+						"attn_value": 0.6
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 1,
+						"attn_value": 0.2
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 2,
+						"attn_value": 0.8
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 2
+					}
+				],
+				"1": [
+					{
+						"input_pos": 0,
+						"prompt_pos": 0,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 2,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 3,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 0,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 1,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 3,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 0,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 1,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 2,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 2
+					}
+				]
 			}
 		},
 		{
-			"sentence" : "sentence 3 sentence 3 sentence 3 sentence 3 sentence 3 sentence 3 sentence 3 sentence 3 sentence 3 sentence 3 sentence 3 sentence 3 ",
-			"label" : "1",
-			"tsne" : {
-				"x" : "0",
-				"y" : "2"
+			"sentence": "sentence 3 sentence 3 sentence 3 sentence 3 sentence 3 sentence 3 sentence 3 sentence 3 sentence 3 sentence 3 sentence 3 sentence 3 ",
+			"label": "1",
+			"tsne": {
+				"x": "0",
+				"y": "2"
+			},
+			"topk": [
+				{
+					"token": "sent3_candidate1",
+					"score": 0.7
+				},
+				{
+					"token": "sent3_candidate2",
+					"score": 0.3
+				},
+				{
+					"token": "sent3_candidate3",
+					"score": 0.1
+				},
+				{
+					"token": "sent3_candidate4",
+					"score": 0.09
+				},
+				{
+					"token": "sent3_candidate5",
+					"score": 0.01
+				},
+				{
+					"token": "sent3_candidate6",
+					"score": 0.01
+				},
+				{
+					"token": "sent3_candidate7",
+					"score": 0.01
+				},
+				{
+					"token": "sent3_candidate8",
+					"score": 0.01
+				},
+				{
+					"token": "sent3_candidate9",
+					"score": 0.01
+				},
+				{
+					"token": "sent3_candidate10",
+					"score": 0.01
+				}
+			],
+			"attentions": {
+				"input_tokens": [
+					"sent3_input_token_1",
+					"sent3_input_token_2",
+					"sent3_input_token_3",
+					"sent3_input_token_4"
+				],
+				"prompt_tokens": [
+					"sent3_prompt_token_1",
+					"sent3_prompt_token_2",
+					"sent3_prompt_token_3",
+					"sent3_prompt_token_4"
+				],
+				"num_layer": 12,
+				"0": [
+					{
+						"input_pos": 0,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 0.5
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 0.3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 0.5
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 2,
+						"attn_value": 0.2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 3,
+						"attn_value": 0.1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 0,
+						"attn_value": 0.4
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 1,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 3,
+						"attn_value": 0.6
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 0,
+						"attn_value": 0.6
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 1,
+						"attn_value": 0.2
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 2,
+						"attn_value": 0.8
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 2
+					}
+				],
+				"1": [
+					{
+						"input_pos": 0,
+						"prompt_pos": 0,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 2,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 3,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 0,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 1,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 3,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 0,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 1,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 2,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 2
+					}
+				]
 			}
 		},
 		{
-			"sentence" : "sentence 4 sentence 4 sentence 4 sentence 4 sentence 4 sentence 4 sentence 4 sentence 4 sentence 4 sentence 4 sentence 4 sentence 4 sentence 4 ",
-			"label" : "0",
-			"tsne" : {
-				"x" : "-1",
-				"y" : "2"
+			"sentence": "sentence 4 sentence 4 sentence 4 sentence 4 sentence 4 sentence 4 sentence 4 sentence 4 sentence 4 sentence 4 sentence 4 sentence 4 sentence 4 ",
+			"label": "0",
+			"tsne": {
+				"x": "-1",
+				"y": "2"
+			},
+			"topk": [
+				{
+					"token": "sent4_candidate1",
+					"score": 0.9
+				},
+				{
+					"token": "sent4_candidate2",
+					"score": 0.09
+				},
+				{
+					"token": "sent4_candidate3",
+					"score": 0.09
+				},
+				{
+					"token": "sent4_candidate4",
+					"score": 0.09
+				},
+				{
+					"token": "sent4_candidate5",
+					"score": 0.01
+				},
+				{
+					"token": "sent4_candidate6",
+					"score": 0.01
+				},
+				{
+					"token": "sent4_candidate7",
+					"score": 0.01
+				},
+				{
+					"token": "sent4_candidate8",
+					"score": 0.01
+				},
+				{
+					"token": "sent4_candidate9",
+					"score": 0.01
+				},
+				{
+					"token": "sent4_candidate10",
+					"score": 0.01
+				}
+			],
+			"attentions": {
+				"input_tokens": [
+					"sent4_input_token_1",
+					"sent4_input_token_2",
+					"sent4_input_token_3",
+					"sent4_input_token_4"
+				],
+				"prompt_tokens": [
+					"sent4_prompt_token_1",
+					"sent4_prompt_token_2",
+					"sent4_prompt_token_3",
+					"sent4_prompt_token_4"
+				],
+				"num_layer": 12,
+				"0": [
+					{
+						"input_pos": 0,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 0.5
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 0.3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 0.5
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 2,
+						"attn_value": 0.2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 3,
+						"attn_value": 0.1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 0,
+						"attn_value": 0.4
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 1,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 3,
+						"attn_value": 0.6
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 0,
+						"attn_value": 0.6
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 1,
+						"attn_value": 0.2
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 2,
+						"attn_value": 0.8
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 2
+					}
+				],
+				"1": [
+					{
+						"input_pos": 0,
+						"prompt_pos": 0,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 2,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 3,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 0,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 1,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 3,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 0,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 1,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 2,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 2
+					}
+				]
 			}
 		},
 		{
-			"sentence" : "sentence 5 sentence 5 sentence 5 sentence 5 sentence 5 sentence 5 sentence 5 sentence 5 sentence 5 sentence 5 sentence 5 sentence 5 sentence 5 sentence 5",
-			"label" : "0",
-			"tsne" : {
-				"x" : "-1",
-				"y" : "7"
+			"sentence": "sentence 5 sentence 5 sentence 5 sentence 5 sentence 5 sentence 5 sentence 5 sentence 5 sentence 5 sentence 5 sentence 5 sentence 5 sentence 5 sentence 5",
+			"label": "0",
+			"tsne": {
+				"x": "-1",
+				"y": "7"
+			},
+			"topk": [
+				{
+					"token": "sent5_candidate1",
+					"score": 0.5
+				},
+				{
+					"token": "sent5_candidate2",
+					"score": 0.1
+				},
+				{
+					"token": "sent5_candidate3",
+					"score": 0.1
+				},
+				{
+					"token": "sent5_candidate4",
+					"score": 0.09
+				},
+				{
+					"token": "sent5_candidate5",
+					"score": 0.01
+				},
+				{
+					"token": "sent5_candidate6",
+					"score": 0.01
+				},
+				{
+					"token": "sent5_candidate7",
+					"score": 0.01
+				},
+				{
+					"token": "sent5_candidate8",
+					"score": 0.01
+				},
+				{
+					"token": "sent5_candidate9",
+					"score": 0.01
+				},
+				{
+					"token": "sent5_candidate10",
+					"score": 0.01
+				}
+			],
+			"attentions": {
+				"input_tokens": [
+					"sent5_input_token_1",
+					"sent5_input_token_2",
+					"sent5_input_token_3",
+					"sent5_input_token_4"
+				],
+				"prompt_tokens": [
+					"sent5_prompt_token_1",
+					"sent5_prompt_token_2",
+					"sent5_prompt_token_3",
+					"sent5_prompt_token_4"
+				],
+				"num_layer": 12,
+				"0": [
+					{
+						"input_pos": 0,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 0.5
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 0.3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 0.5
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 2,
+						"attn_value": 0.2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 3,
+						"attn_value": 0.1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 0,
+						"attn_value": 0.4
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 1,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 3,
+						"attn_value": 0.6
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 0,
+						"attn_value": 0.6
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 1,
+						"attn_value": 0.2
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 2,
+						"attn_value": 0.8
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 2
+					}
+				],
+				"1": [
+					{
+						"input_pos": 0,
+						"prompt_pos": 0,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 2,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 3,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 0,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 1,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 3,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 0,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 1,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 2,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 2
+					}
+				]
 			}
 		},
 		{
-			"sentence" : "sentence 6 sentence 6 sentence 6 sentence 6 sentence 6 sentence 6 sentence 6 sentence 6 sentence 6 sentence 6 sentence 6 sentence 6 sentence 6 sentence 6 ",
-			"label" : "1",
-			"tsne" : {
-				"x" : "5",
-				"y" : "3"
+			"sentence": "sentence 6 sentence 6 sentence 6 sentence 6 sentence 6 sentence 6 sentence 6 sentence 6 sentence 6 sentence 6 sentence 6 sentence 6 sentence 6 sentence 6 ",
+			"label": "1",
+			"tsne": {
+				"x": "5",
+				"y": "3"
+			},
+			"topk": [
+				{
+					"token": "sent6_candidate1",
+					"score": 0.9
+				},
+				{
+					"token": "sent6_candidate2",
+					"score": 0.09
+				},
+				{
+					"token": "sent6_candidate3",
+					"score": 0.09
+				},
+				{
+					"token": "sent6_candidate4",
+					"score": 0.09
+				},
+				{
+					"token": "sent6_candidate5",
+					"score": 0.01
+				},
+				{
+					"token": "sent6_candidate6",
+					"score": 0.01
+				},
+				{
+					"token": "sent6_candidate7",
+					"score": 0.01
+				},
+				{
+					"token": "sent6_candidate8",
+					"score": 0.01
+				},
+				{
+					"token": "sent6_candidate9",
+					"score": 0.01
+				},
+				{
+					"token": "sent6_candidate10",
+					"score": 0.01
+				}
+			],
+			"attentions": {
+				"input_tokens": [
+					"sent6_input_token_1",
+					"sent6_input_token_2",
+					"sent6_input_token_3",
+					"sent6_input_token_4"
+				],
+				"prompt_tokens": [
+					"sent6_prompt_token_1",
+					"sent6_prompt_token_2",
+					"sent6_prompt_token_3",
+					"sent6_prompt_token_4"
+				],
+				"num_layer": 12,
+				"0": [
+					{
+						"input_pos": 0,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 0.5
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 0.3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 0.5
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 2,
+						"attn_value": 0.2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 3,
+						"attn_value": 0.1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 0,
+						"attn_value": 0.4
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 1,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 3,
+						"attn_value": 0.6
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 0,
+						"attn_value": 0.6
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 1,
+						"attn_value": 0.2
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 2,
+						"attn_value": 0.8
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 2
+					}
+				],
+				"1": [
+					{
+						"input_pos": 0,
+						"prompt_pos": 0,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 2,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 3,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 0,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 1,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 3,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 0,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 1,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 2,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 2
+					}
+				]
 			}
 		},
 		{
-			"sentence" : "sentence 7",
-			"label" : "0",
-			"tsne" : {
-				"x" : "-4",
-				"y" : "-2"
+			"sentence": "sentence 7",
+			"label": "0",
+			"tsne": {
+				"x": "-4",
+				"y": "-2"
+			},
+			"topk": [
+				{
+					"token": "sent7_candidate1",
+					"score": 0.3
+				},
+				{
+					"token": "sent7_candidate2",
+					"score": 0.3
+				},
+				{
+					"token": "sent7_candidate3",
+					"score": 0.3
+				},
+				{
+					"token": "sent7_candidate4",
+					"score": 0.09
+				},
+				{
+					"token": "sent7_candidate5",
+					"score": 0.01
+				},
+				{
+					"token": "sent7_candidate6",
+					"score": 0.01
+				},
+				{
+					"token": "sent7_candidate7",
+					"score": 0.01
+				},
+				{
+					"token": "sent7_candidate8",
+					"score": 0.01
+				},
+				{
+					"token": "sent7_candidate9",
+					"score": 0.01
+				},
+				{
+					"token": "sent7_candidate10",
+					"score": 0.01
+				}
+			],
+			"attentions": {
+				"input_tokens": [
+					"sent7_input_token_1",
+					"sent7_input_token_2",
+					"sent7_input_token_3",
+					"sent7_input_token_4"
+				],
+				"prompt_tokens": [
+					"sent7_prompt_token_1",
+					"sent7_prompt_token_2",
+					"sent7_prompt_token_3",
+					"sent7_prompt_token_4"
+				],
+				"num_layer": 12,
+				"0": [
+					{
+						"input_pos": 0,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 0.5
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 0.3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 0.5
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 2,
+						"attn_value": 0.2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 3,
+						"attn_value": 0.1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 0,
+						"attn_value": 0.4
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 1,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 3,
+						"attn_value": 0.6
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 0,
+						"attn_value": 0.6
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 1,
+						"attn_value": 0.2
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 2,
+						"attn_value": 0.8
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 2
+					}
+				],
+				"1": [
+					{
+						"input_pos": 0,
+						"prompt_pos": 0,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 2,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 3,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 0,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 1,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 3,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 0,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 1,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 2,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 2
+					}
+				]
 			}
 		},
 		{
-			"sentence" : "sentence 8",
-			"label" : "0",
-			"tsne" : {
-				"x" : "2",
-				"y" : "1"
+			"sentence": "sentence 8",
+			"label": "0",
+			"tsne": {
+				"x": "2",
+				"y": "1"
+			},
+			"topk": [
+				{
+					"token": "sent8_candidate1",
+					"score": 0.4
+				},
+				{
+					"token": "sent8_candidate2",
+					"score": 0.3
+				},
+				{
+					"token": "sent8_candidate3",
+					"score": 0.2
+				},
+				{
+					"token": "sent8_candidate4",
+					"score": 0.09
+				},
+				{
+					"token": "sent8_candidate5",
+					"score": 0.01
+				},
+				{
+					"token": "sent8_candidate6",
+					"score": 0.01
+				},
+				{
+					"token": "sent8_candidate7",
+					"score": 0.01
+				},
+				{
+					"token": "sent8_candidate8",
+					"score": 0.01
+				},
+				{
+					"token": "sent8_candidate9",
+					"score": 0.01
+				},
+				{
+					"token": "sent8_candidate10",
+					"score": 0.01
+				}
+			],
+			"attentions": {
+				"input_tokens": [
+					"sent8_input_token_1",
+					"sent8_input_token_2",
+					"sent8_input_token_3",
+					"sent8_input_token_4"
+				],
+				"prompt_tokens": [
+					"sent8_prompt_token_1",
+					"sent8_prompt_token_2",
+					"sent8_prompt_token_3",
+					"sent8_prompt_token_4"
+				],
+				"num_layer": 12,
+				"0": [
+					{
+						"input_pos": 0,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 0.5
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 0.3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 0.5
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 2,
+						"attn_value": 0.2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 3,
+						"attn_value": 0.1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 0,
+						"attn_value": 0.4
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 1,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 3,
+						"attn_value": 0.6
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 0,
+						"attn_value": 0.6
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 1,
+						"attn_value": 0.2
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 2,
+						"attn_value": 0.8
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 2
+					}
+				],
+				"1": [
+					{
+						"input_pos": 0,
+						"prompt_pos": 0,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 2,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 3,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 0,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 1,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 3,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 0,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 1,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 2,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 2
+					}
+				]
 			}
 		},
 		{
-			"sentence" : "sentence 9",
-			"label" : "1",
-			"tsne" : {
-				"x" : "4",
-				"y" : "1"
+			"sentence": "sentence 9",
+			"label": "1",
+			"tsne": {
+				"x": "4",
+				"y": "1"
+			},
+			"topk": [
+				{
+					"token": "sent9_candidate1",
+					"score": 0.4
+				},
+				{
+					"token": "sent9_candidate2",
+					"score": 0.3
+				},
+				{
+					"token": "sent9_candidate3",
+					"score": 0.2
+				},
+				{
+					"token": "sent9_candidate4",
+					"score": 0.09
+				},
+				{
+					"token": "sent9_candidate5",
+					"score": 0.01
+				},
+				{
+					"token": "sent9_candidate6",
+					"score": 0.01
+				},
+				{
+					"token": "sent9_candidate7",
+					"score": 0.01
+				},
+				{
+					"token": "sent9_candidate8",
+					"score": 0.01
+				},
+				{
+					"token": "sent9_candidate9",
+					"score": 0.01
+				},
+				{
+					"token": "sent9_candidate10",
+					"score": 0.01
+				}
+			],
+			"attentions": {
+				"input_tokens": [
+					"sent9_input_token_1",
+					"sent9_input_token_2",
+					"sent9_input_token_3",
+					"sent9_input_token_4"
+				],
+				"prompt_tokens": [
+					"sent9_prompt_token_1",
+					"sent9_prompt_token_2",
+					"sent9_prompt_token_3",
+					"sent9_prompt_token_4"
+				],
+				"num_layer": 12,
+				"0": [
+					{
+						"input_pos": 0,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 0.5
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 0.3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 0.5
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 2,
+						"attn_value": 0.2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 3,
+						"attn_value": 0.1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 0,
+						"attn_value": 0.4
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 1,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 3,
+						"attn_value": 0.6
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 0,
+						"attn_value": 0.6
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 1,
+						"attn_value": 0.2
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 2,
+						"attn_value": 0.8
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 2
+					}
+				],
+				"1": [
+					{
+						"input_pos": 0,
+						"prompt_pos": 0,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 2,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 3,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 0,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 1,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 3,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 0,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 1,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 2,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 2
+					}
+				]
 			}
 		},
 		{
-			"sentence" : "sentence 10",
-			"label" : "0",
-			"tsne" : {
-				"x" : "-2",
-				"y" : "-2"
+			"sentence": "sentence 10",
+			"label": "0",
+			"tsne": {
+				"x": "-2",
+				"y": "-2"
+			},
+			"topk": [
+				{
+					"token": "sent10_candidate1",
+					"score": 0.4
+				},
+				{
+					"token": "sent10_candidate2",
+					"score": 0.3
+				},
+				{
+					"token": "sent10_candidate3",
+					"score": 0.2
+				},
+				{
+					"token": "sent10_candidate4",
+					"score": 0.09
+				},
+				{
+					"token": "sent10_candidate5",
+					"score": 0.01
+				},
+				{
+					"token": "sent10_candidate6",
+					"score": 0.01
+				},
+				{
+					"token": "sent10_candidate7",
+					"score": 0.01
+				},
+				{
+					"token": "sent10_candidate8",
+					"score": 0.01
+				},
+				{
+					"token": "sent10_candidate9",
+					"score": 0.01
+				},
+				{
+					"token": "sent10_candidate10",
+					"score": 0.01
+				}
+			],
+			"attentions": {
+				"input_tokens": [
+					"sent10_input_token_1",
+					"sent10_input_token_2",
+					"sent10_input_token_3",
+					"sent10_input_token_4"
+				],
+				"prompt_tokens": [
+					"sent10_prompt_token_1",
+					"sent10_prompt_token_2",
+					"sent10_prompt_token_3",
+					"sent10_prompt_token_4"
+				],
+				"num_layer": 12,
+				"0": [
+					{
+						"input_pos": 0,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 0.5
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 0.3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 0.5
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 2,
+						"attn_value": 0.2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 3,
+						"attn_value": 0.1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 0,
+						"attn_value": 0.4
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 1,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 3,
+						"attn_value": 0.6
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 0,
+						"attn_value": 0.6
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 1,
+						"attn_value": 0.2
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 2,
+						"attn_value": 0.8
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 2
+					}
+				],
+				"1": [
+					{
+						"input_pos": 0,
+						"prompt_pos": 0,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 0,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 1,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 2,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 1,
+						"prompt_pos": 3,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 0,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 1,
+						"attn_value": 2
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 2,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 2,
+						"prompt_pos": 3,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 0,
+						"attn_value": 1
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 1,
+						"attn_value": 0
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 2,
+						"attn_value": 3
+					},
+					{
+						"input_pos": 3,
+						"prompt_pos": 3,
+						"attn_value": 2
+					}
+				]
 			}
-		}
-	],
-	"attentions" : {
-		"input_tokens" : ["input_token_1", "input_token_2", "input_token_3", "input_token_4"],
-		"prompt_tokens" : ["prompt_token_1", "prompt_token_2", "prompt_token_3", "prompt_token_4"],
-		"num_layer" : 12,
-		"0" : [
-			{"input_pos" : 0, "prompt_pos": 0, "attn_value": 2},
-			{"input_pos" : 1, "prompt_pos": 1, "attn_value": 1},
-			{"input_pos" : 2, "prompt_pos": 2, "attn_value": 0.5},
-			{"input_pos" : 3, "prompt_pos": 3, "attn_value": 0.3},
-		 
-			{"input_pos" : 1, "prompt_pos": 0, "attn_value": 2},
-			{"input_pos" : 1, "prompt_pos": 1, "attn_value": 0.5},
-			{"input_pos" : 1, "prompt_pos": 2, "attn_value": 0.2},
-			{"input_pos" : 1, "prompt_pos": 3, "attn_value": 0.1},
-		
-			{"input_pos" : 2, "prompt_pos": 0, "attn_value": 0.4},
-			{"input_pos" : 2, "prompt_pos": 1, "attn_value": 1},
-			{"input_pos" : 2, "prompt_pos": 2, "attn_value": 2},
-			{"input_pos" : 2, "prompt_pos": 3, "attn_value": 0.6},
-		
-			{"input_pos" : 3, "prompt_pos": 0, "attn_value": 0.6},
-			{"input_pos" : 3, "prompt_pos": 1, "attn_value": 0.2},
-			{"input_pos" : 3, "prompt_pos": 2, "attn_value": 0.8},
-			{"input_pos" : 3, "prompt_pos": 3, "attn_value": 2}
-		],
-		"1" : [
-			{"input_pos" : 0, "prompt_pos" : 0, "attn_value" : 3},
-			{"input_pos" : 1, "prompt_pos" : 1, "attn_value" : 2},
-			{"input_pos" : 2, "prompt_pos" : 2, "attn_value" : 1},
-			{"input_pos" : 3, "prompt_pos" : 3, "attn_value" : 0},
-		 
-			{"input_pos" : 1, "prompt_pos" : 0, "attn_value" : 2},
-			{"input_pos" : 1, "prompt_pos" : 1, "attn_value" : 3},
-			{"input_pos" : 1, "prompt_pos" : 2, "attn_value" : 0},
-			{"input_pos" : 1, "prompt_pos" : 3, "attn_value" : 1},
-		
-			{"input_pos" : 2, "prompt_pos" : 0, "attn_value" : 0},
-			{"input_pos" : 2, "prompt_pos" : 1, "attn_value" : 2},
-			{"input_pos" : 2, "prompt_pos" : 2, "attn_value" : 3},
-			{"input_pos" : 2, "prompt_pos" : 3, "attn_value" : 1},
-		
-			{"input_pos" : 3, "prompt_pos" : 0, "attn_value" : 1},
-			{"input_pos" : 3, "prompt_pos" : 1, "attn_value" : 0},
-			{"input_pos" : 3, "prompt_pos" : 2, "attn_value" : 3},
-			{"input_pos" : 3, "prompt_pos" : 3, "attn_value" : 2}  
-		]
-	},
-	"topk" : [
-		{
-			"token" : "candidate1",
-			"score" : 0.4
-		}, 
-		{
-			"token" : "candidate2",
-			"score" : 0.3
-		}, 
-		{
-			"token" : "candidate3",
-			"score" : 0.2
-		}, 
-		{
-			"token" : "candidate4",
-			"score" : 0.09
-		}, 
-		{
-			"token" : "candidate5",
-			"score" : 0.01
-		}, 
-		{
-			"token" : "candidate6",
-			"score" : 0.01
-		}, 
-		{
-			"token" : "candidate7",
-			"score" : 0.01
-		}, 
-		{
-			"token" : "candidate8",
-			"score" : 0.01
-		}, 
-		{
-			"token" : "candidate9",
-			"score" : 0.01
-		}, 
-		{
-			"token" : "candidate10",
-			"score" : 0.01
 		}
 	]
 }

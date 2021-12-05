@@ -2,13 +2,13 @@ import React, { useRef, useState, useEffect} from "react";
 import * as d3 from "d3";
 import "../App.css";
 
-import ControlPanel from "./ControlPanel";
 import TablePlot from "./TablePlot";
 import InputPlot from "./InputPlot";
 import AttentionPlot from "./AttentionPlot";
 import BarPlot from "./BarPlot";
 
 const Mainplot = (props) => {
+    const isFirst = useRef(true)
 
 	const splotSvg = useRef(null);
     const size = 300;
@@ -16,14 +16,11 @@ const Mainplot = (props) => {
     const margin = 20;
     const colorList = ['red', 'blue', 'green', 'yellow']
 
-    const [dataset, setDataset] = useState(props.dataset[0]);
-    const [model, setModel] = useState(props.model[0]);
-    const [embedding, setEmbedding] = useState(props.embedding[0]);
-
     // for scatter plot & table
     const [embeddingsData, setEmbeddingsData] = useState(props.data['embeddings']);
-    const [topk, setTopk] = useState(props.data['topk']);
-    const [attentions, setAttentions] = useState(props.data['attentions']);
+    const [topk, setTopk] = useState();
+    const [attentions, setAttentions] = useState();
+    const [selectedData, setSelectedData] = useState(null);
 
     /*
     최초실행시 출력하는 화면
@@ -59,43 +56,54 @@ const Mainplot = (props) => {
                             d3.max(embeddingsData, d => d.y)
                         ])
                         .range([size, 0]);
-        // initial circles
-        splot.append('g')
-            .attr('transform', `translate(${margin}, ${margin})`)
-            .selectAll('circle')
-            .data(embeddingsData)
-            .enter()
-            .append('circle')
-            .attr('cx', d => xScale(d.x))
-            .attr('cy', d => yScale(d.y))
-            .attr('x', d => d.x)
-            .attr('y', d => d.y)
-            .style("fill", (d, i) => {
-                return colorList[labelList.indexOf(d.label)];
-            })
-            .attr('r', circleSize)
-            .attr("id", (d, i) => "id"+i)
-            .on("click", (d,i) => {
-                var circles = splot.selectAll('circle');
-                circles.forEach()
-            });
+        if(isFirst.current) {
+            // initial circles
+            splot.append('g')
+                .attr('transform', `translate(${margin}, ${margin})`)
+                .selectAll('circle')
+                .data(embeddingsData)
+                .enter()
+                .append('circle')
+                .attr('cx', d => xScale(d.x))
+                .attr('cy', d => yScale(d.y))
+                .attr('x', d => d.x)
+                .attr('y', d => d.y)
+                .style("fill", (d, i) => {
+                    return colorList[labelList.indexOf(d.label)];
+                })
+                .attr('r', circleSize)
+                .attr("id", (d, i) => "id_" + i)
+                .attr('fill-opacity', 1)
+                .on("click", (d,i) => {
+                    var circles = splot.selectAll('circle');
+                    console.log(d);
+                    //circles.forEach()
+                });
+            } else {
+                const circle = splot.selectAll('circle');
+                circle.transition()
+                        .duration(500)
+                        .attr('fill-opacity', (d,i) => {
+                            if(selectedData === d) {
+                                return 1;
+                            } else {
+                                return 0.3;
+                            }
+                        });
+            }
+        
+        if(isFirst.current)  
+            isFirst.current = false;
 
-    }, [embeddingsData]);
+    }, [embeddingsData, topk, attentions, selectedData]);
 
 
     return (
         <div>
-            <div class="splotContainer" id="control_panel">
-                <ControlPanel
-                    dataset={props.dataset}
-                    model={props.model}
-                    embedding={props.embedding}
-                    host={props.host}
-                    setData={setEmbeddingsData}
-                    setTopk={setTopk}
-                    setAttentions={setAttentions}
-                />
+            <div id="container" style={{margin:"1%"}}>
+                <b>Visualization for Interpretability of Pretrained Language model</b>
             </div>
+            
             <div id="container">
                 <div id="scatter_plot">
                     <svg ref={splotSvg} width={size+margin} height={size+margin}>
@@ -104,24 +112,33 @@ const Mainplot = (props) => {
                 <div id="table_plot">
                     <TablePlot
                         data={embeddingsData}
-                        setData={setEmbeddingsData}
+                        selectedData={selectedData}
+                        setSelectedData={setSelectedData}
                     />
                 </div>
                 <div id="input_plot">
-                    <InputPlot/>
+                    <InputPlot
+                        dataset={props.dataset}
+                        model={props.model}
+                        embedding={props.embedding}
+                        host={props.host}
+                        setData={setEmbeddingsData}
+                        setTopk={setTopk}
+                        setAttentions={setAttentions}
+                    />
                 </div>
             </div>
             <div id="container">
                 <div id="bottom_plot">
                     <BarPlot
-                        data={topk}
+                        data={selectedData}
                     />
                 </div>
-                <div id="bottom_plot">
+                {/* <div id="bottom_plot">
                     <AttentionPlot
-                        attentions={attentions}
+                        attentions={selectedData}
                     />
-                </div>
+                </div> */}
             </div>
         </div>
 	)
