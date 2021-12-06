@@ -134,11 +134,11 @@ const Mainplot = (props) => {
                         data={selectedData}
                     />
                 </div>
-                {/* <div id="bottom_plot">
+                 <div id="bottom_plot">
                     <AttentionPlot
                         attentions={selectedData}
                     />
-                </div> */}
+                </div>
             </div>
         </div>
 	)
