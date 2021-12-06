@@ -301,17 +301,17 @@
 					{
 						"input_pos": 1,
 						"prompt_pos": 1,
-						"attn_value": 1
+						"attn_value": 2
 					},
 					{
 						"input_pos": 2,
 						"prompt_pos": 2,
-						"attn_value": 0.5
+						"attn_value": 2
 					},
 					{
 						"input_pos": 3,
 						"prompt_pos": 3,
-						"attn_value": 0.3
+						"attn_value": 2
 					},
 					{
 						"input_pos": 1,
@@ -321,27 +321,27 @@
 					{
 						"input_pos": 1,
 						"prompt_pos": 1,
-						"attn_value": 0.5
+						"attn_value": 2
 					},
 					{
 						"input_pos": 1,
 						"prompt_pos": 2,
-						"attn_value": 0.2
+						"attn_value": 2
 					},
 					{
 						"input_pos": 1,
 						"prompt_pos": 3,
-						"attn_value": 0.1
+						"attn_value": 2
 					},
 					{
 						"input_pos": 2,
 						"prompt_pos": 0,
-						"attn_value": 0.4
+						"attn_value": 2
 					},
 					{
 						"input_pos": 2,
 						"prompt_pos": 1,
-						"attn_value": 1
+						"attn_value": 2
 					},
 					{
 						"input_pos": 2,
@@ -351,22 +351,22 @@
 					{
 						"input_pos": 2,
 						"prompt_pos": 3,
-						"attn_value": 0.6
+						"attn_value": 2
 					},
 					{
 						"input_pos": 3,
 						"prompt_pos": 0,
-						"attn_value": 0.6
+						"attn_value": 2
 					},
 					{
 						"input_pos": 3,
 						"prompt_pos": 1,
-						"attn_value": 0.2
+						"attn_value": 2
 					},
 					{
 						"input_pos": 3,
 						"prompt_pos": 2,
-						"attn_value": 0.8
+						"attn_value": 2
 					},
 					{
 						"input_pos": 3,
@@ -378,82 +378,82 @@
 					{
 						"input_pos": 0,
 						"prompt_pos": 0,
-						"attn_value": 3
+						"attn_value": 4
 					},
 					{
 						"input_pos": 1,
 						"prompt_pos": 1,
-						"attn_value": 2
+						"attn_value": 4
 					},
 					{
 						"input_pos": 2,
 						"prompt_pos": 2,
-						"attn_value": 1
+						"attn_value": 4
 					},
 					{
 						"input_pos": 3,
 						"prompt_pos": 3,
-						"attn_value": 0
+						"attn_value": 4
 					},
 					{
 						"input_pos": 1,
 						"prompt_pos": 0,
-						"attn_value": 2
+						"attn_value": 4
 					},
 					{
 						"input_pos": 1,
 						"prompt_pos": 1,
-						"attn_value": 3
+						"attn_value": 4
 					},
 					{
 						"input_pos": 1,
 						"prompt_pos": 2,
-						"attn_value": 0
+						"attn_value": 4
 					},
 					{
 						"input_pos": 1,
 						"prompt_pos": 3,
-						"attn_value": 1
+						"attn_value": 4
 					},
 					{
 						"input_pos": 2,
 						"prompt_pos": 0,
-						"attn_value": 0
+						"attn_value": 4
 					},
 					{
 						"input_pos": 2,
 						"prompt_pos": 1,
-						"attn_value": 2
+						"attn_value": 4
 					},
 					{
 						"input_pos": 2,
 						"prompt_pos": 2,
-						"attn_value": 3
+						"attn_value": 4
 					},
 					{
 						"input_pos": 2,
 						"prompt_pos": 3,
-						"attn_value": 1
+						"attn_value": 4
 					},
 					{
 						"input_pos": 3,
 						"prompt_pos": 0,
-						"attn_value": 1
+						"attn_value": 4
 					},
 					{
 						"input_pos": 3,
 						"prompt_pos": 1,
-						"attn_value": 0
+						"attn_value": 4
 					},
 					{
 						"input_pos": 3,
 						"prompt_pos": 2,
-						"attn_value": 3
+						"attn_value": 4
 					},
 					{
 						"input_pos": 3,
 						"prompt_pos": 3,
-						"attn_value": 2
+						"attn_value": 4
 					}
 				]
 			}

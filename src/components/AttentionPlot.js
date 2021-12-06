@@ -11,25 +11,9 @@ const AttentionPlot = (props) => {
 
     const interval = 1000;
 
-    const [wordLength, setWordLength] = useState()
-
-
     const fixed_height = 10;
 
-    /*
-    const [tokens,setTokens]=useState({
-        'input_tokens' : props['attentions']['input_tokens'], 
-        'prompt_tokens' : props['attentions']['prompt_tokens']});
-    */
-    const [tokens, setTokens] = useState()
-
-
-    // first layer attention as default
-    /*
-    const [data, setData] = useState(props['attentions']['0']);
-    */
     const [data, setData] = useState()
-
     function generateColumns(num_layer) {
         var index;
         var results = [];
@@ -42,20 +26,29 @@ const AttentionPlot = (props) => {
         return results;
     }
 
-    /*
-    const tableview_columns = generateColumns(props['attentions']['num_layer']);
-    */
     var tableview_columns
+    function tableview_columns_generate() {
+        if (props['attentions'] == null) {
+            tableview_columns = ['Default']
+        } else if (props['attentions'] != null) {
+            tableview_columns = generateColumns(props.attentions['attentions']['num_layer'])
+        }
+    }
+    tableview_columns_generate()
+    //
+
+    const [layerIdx, setLayerIdx] = useState([0])
 
     function onChange_column(value) {
         var length = value.value.length;
         console.log('length', length)
         var layer_index = value.value[length - 1];
         console.log('layer_index', layer_index);
+        setLayerIdx(layer_index)
 
-        if (props['attentions'] != null) {
-            if (layer_index in props['attentions'])
-                setData(props['attentions'][layer_index]);
+        if (props.attentions['attentions'] != null) {
+            if (layer_index in props.attentions['attentions'])
+                setData(props.attentions['attentions'][layer_index]);
             else
                 alert('No data for layer ' + layer_index);
         }
@@ -66,49 +59,16 @@ const AttentionPlot = (props) => {
     */
 
     useEffect(() => {
-
-        // wordLength
-        if (props['attentions'] == null) {
-            setWordLength(5)
-        } else {
-            if (props['attentions']['input_tokens'].length > props['attentions']['prompt_tokens'].length) {
-                setWordLength(props['attentions']['input_tokens'].length);
-            } else {
-                setWordLength(props['attentions']['prompt_tokens'].length);
-            }
-        }
-        // Tokens
-        if (props['attentions'] == null) {
-            setTokens(null)
-        } else {
-            setTokens(
-                {
-                    'input_tokens': props['attentions']['input_tokens'],
-                    'prompt_tokens': props['attentions']['prompt_tokens']
-                }
-            )
-        }
-        // Data
-        if (props['attentions'] == null) {
-            setData(null)
-        } else {
-            setData(
-                props['attentions']['0']
-            )
-        }
-        // columns
-        if (props['attentions'] == null) {
-            tableview_columns = ['Default']
-        } else if (props['attentions'] != null) {
-            tableview_columns = generateColumns(props['attentions']['num_layer'])
-        }
-
-
-
+        console.log('rerendered')
 
         if (props['attentions'] != null) {
 
+        tableview_columns_generate()
+
             d3.select(splotSvg.current).selectAll("*").remove()
+            var wordLength = Math.max(
+                props.attentions['attentions']['input_tokens'].length,
+                props.attentions['attentions']['prompt_tokens'].length)
 
             let xScale_top = d3.scaleLinear()
                 .domain([0, (wordLength - 0.5) * interval])
@@ -124,12 +84,12 @@ const AttentionPlot = (props) => {
 
             const xAxis_top = d3.axisBottom(xScale_top).tickFormat(function (d) {
                 var index = d / interval;
-                return tokens['input_tokens'][index];
+                return props.attentions['attentions']['input_tokens'][index];
             }).tickSize(0);
 
             const xAxis_bot = d3.axisBottom(xScale_bot).tickFormat(function (d) {
                 var index = d / interval;
-                return tokens['prompt_tokens'][index];
+                return props.attentions['attentions']['prompt_tokens'][index];
             }).tickSize(0);
 
 
@@ -147,7 +107,7 @@ const AttentionPlot = (props) => {
 
             lines_svg.selectAll('line')
                 .attr('transform', `translate( ${0}, ${0})`)
-                .data(data)
+                .data(props.attentions['attentions'][`${layerIdx}`])
                 .enter()
                 .append('line')
                 .attr("stroke", "red")
@@ -156,11 +116,13 @@ const AttentionPlot = (props) => {
                 .attr("x2", d => xScale_bot((d.prompt_pos * interval)))
                 .attr("y1", yScale(fixed_height))
                 .attr("y2", yScale(0));
+
+
         }
 
         console.log('@@ DONE @@');
 
-    }, [tokens, data]);
+    }, [props.attentions,data]);
 
 
     return (
