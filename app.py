@@ -19,10 +19,10 @@ tokenizer = None
 dataset = None
 umap_model = None
 
-# model = AutoModelForMaskedLM.from_pretrained('bert-base-uncased', output_hidden_states=True, output_attentions=True)
-# model.cuda()
-# tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
-# current_model = 'bert-base-uncased'
+model = AutoModelForMaskedLM.from_pretrained('bert-base-uncased', output_hidden_states=True, output_attentions=True)
+model.cuda()
+tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
+current_model = 'bert-base-uncased'
 
 def mean_pooling(model_output, attention_mask):
     token_embeddings = model_output[0]  # First element of model_output contains all token embeddings
@@ -83,7 +83,6 @@ def process_sentence(input_sentence, prompt):
     """
         return list of embedding objects (sentence, label, umap, topk, attentions)
     """
-    global dataset
     global tokenizer 
     global model
     global umap_model
@@ -104,20 +103,57 @@ def process_sentence(input_sentence, prompt):
     hidden_state = hidden_state.unsqueeze(0)
     coords = umap_model.transform(hidden_state)
 
-    # -1 label for no label
-    return new_sentence, -1, coords[0]
+    # 100 label for no label
+    return new_sentence, 100, coords[0]
+
+def sentence_prediction(input_sentence, prompt):
+    """
+        return list of embedding objects (sentence, label, umap, topk, attentions)
+    """
+    global tokenizer 
+    global model
+
+    # preprocess data
+    new_sentence = f'{input_sentence} {prompt}'
+    encoded_input = tokenizer(new_sentence, truncation=True, max_length=128, padding='max_length', return_tensors='pt')
+    mask_position = (encoded_input['input_ids'][0] == tokenizer.mask_token_id).nonzero(as_tuple=True)[0][0]
+
+    # Compute token embeddings
+    with torch.no_grad():
+        # run model
+        encoded_input = {k: v.cuda() for k, v in encoded_input.items()}
+        model_output = model(**encoded_input)
+
+        # top 10
+        logits = model_output.logits
+        mask_logit = logits[0][mask_position]
+        sm = torch.nn.Softmax(dim=0)
+        probs = sm(mask_logit)
+        tk = torch.topk(probs,10,0)
+        topk_list = []
+        for prob, ids in zip(tk.values.cpu(), tk.indices.cpu()):
+            topk_list.append({tokenizer.decode(ids): float(prob)})
+
+        # mean attention
+        attentions = model_output.attentions
+        attentions = [l[0].mean(dim=0).cpu() for l in attentions]
+
+    input_tokens = tokenizer.tokenize(input_sentence)
+    prompt_tokens = tokenizer.tokenize(prompt)
+
+    return topk_list, attentions, input_tokens, prompt_tokens
 
 
 app = Flask(__name__)
 CORS(app)
 
 @app.route('/')
-def home():
-    """ This was the test page
-    It can be accessed by http://127.0.0.1:5000/
-    May not work!!!!! Use postman!!!
+def healthcheck():
+    """ 
+        healthcheck!!
     """
-    return render_template('home.html')
+    return jsonify({'healthcheck':'success'}), 200
+
 
 @app.route('/submit', methods=['POST'])
 def submit():
@@ -170,6 +206,30 @@ def input_sentence():
     sentence, label, coord = process_sentence(input_sentence, prompt)
     
     return jsonify({'embeddings':{'sentence': sentence, 'label':label, 'x': float(coord[0]), 'y': float(coord[1])}}), 200
+
+
+@app.route('/sentence_detail', methods=['POST'])
+def sentence_detail():
+    """
+    Process single sentence with prompt
+    """
+
+    input_sentence = request.form['sentence']
+    prompt = request.form['prompt']
+
+    topk_list, attentions, input_tokens, prompt_tokens = sentence_prediction(input_sentence, prompt)
+    input_len = len(input_tokens)
+    prompt_len = len(prompt_tokens)
+    attention_results = {"input_tokens": input_tokens, "prompt_tokens": prompt_tokens, "num_layer": len(attentions)}
+
+    for idx, l in enumerate(attentions):
+        layer_attentions = []
+        for input_pos in range(input_len):
+            for prompt_pos in range(prompt_len):
+                layer_attentions.append({"input_pos":input_pos, 'prompt_pos':prompt_pos, "attn_value": float(l[input_pos][input_pos+prompt_pos])})
+        attention_results[str(idx)] = layer_attentions
+
+    return jsonify({'topk': topk_list, 'attentions': attention_results}), 200
 
 
 if __name__ == '__main__':
