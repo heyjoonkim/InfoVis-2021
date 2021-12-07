@@ -1,3 +1,5 @@
 torch
 flask
 transformers
+datasets
+umap-learn
