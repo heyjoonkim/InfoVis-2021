@@ -37,7 +37,7 @@ def max_pooling(model_output, attention_mask):
     token_embeddings[input_mask_expanded == 0] = -1e9  # Set padding tokens to large negative value
     return torch.max(token_embeddings, 1)[0]
 
-def process_dataset(prompt):
+def process_dataset(prompt, method):
     """
         return list of embedding objects (sentence, label, umap, topk, attentions)
     """
@@ -51,7 +51,7 @@ def process_dataset(prompt):
     # print(dataset['example_with_prompt'])
     sentence_list = dataset['example_with_prompt']
     label_list = dataset['label']
-    dataset.set_format(type='torch', columns=['input_ids', 'token_type_ids', 'attention_mask', 'mask_position', 'in_len', 'prompt_len'])
+    dataset.set_format(type='torch', columns=['input_ids', 'token_type_ids', 'attention_mask', 'mask_position'])
     # dataloader
     dataloader = torch.utils.data.DataLoader(dataset, batch_size=20)
     data_list = []
@@ -62,14 +62,19 @@ def process_dataset(prompt):
             batch = {k: v.cuda() for k, v in batch.items()}
             # pop additional data
             mask_position = batch.pop('mask_position')
-            in_len = batch.pop('in_len')
-            prompt_len = batch.pop('prompt_len')
             # run model
             model_output = model(**batch)
             # get top 10 results
-            mask_position=torch.unsqueeze(mask_position, 1)
-            mask_position = mask_position.unsqueeze(2).expand(mask_position.size(0), mask_position.size(1), model_output.hidden_states[0].size(2))
-            hidden_states = torch.gather(model_output.hidden_states[0], 1, mask_position).squeeze()
+            if method=='mask':
+                mask_position=torch.unsqueeze(mask_position, 1)
+                mask_position = mask_position.unsqueeze(2).expand(mask_position.size(0), mask_position.size(1), model_output.hidden_states[0].size(2))
+                hidden_states = torch.gather(model_output.hidden_states[0], 1, mask_position).squeeze()
+            elif method=='cls':
+                hidden_states = model_output.hidden_states[0][:,0,:]
+            elif method=='mean':
+                hidden_states = mean_pooling(model_output.hidden_states,batch['attention_mask'])
+            elif method=='max':
+                hidden_states = max_pooling(model_output.hidden_states,batch['attention_mask'])
 
             data_list.append(hidden_states.cpu())
 
@@ -79,7 +84,7 @@ def process_dataset(prompt):
 
     return sentence_list, label_list, coords
 
-def process_sentence(input_sentence, prompt):
+def process_sentence(input_sentence, prompt, method):
     """
         return list of embedding objects (sentence, label, umap, topk, attentions)
     """
@@ -97,7 +102,14 @@ def process_sentence(input_sentence, prompt):
         # run model
         encoded_input = {k: v.cuda() for k, v in encoded_input.items()}
         model_output = model(**encoded_input)
-        hidden_state = model_output.hidden_states[0][0][mask_position]
+        if method == 'mask':
+            hidden_state = model_output.hidden_states[0][0][mask_position]
+        elif method == 'cls':
+            hidden_state = model_output.hidden_states[0][0][0]
+        elif method == 'mean':
+            hidden_state = mean_pooling(model_output.hidden_states, encoded_input['attention_mask'])[0]
+        elif method == 'max':
+            hidden_state = max_pooling(model_output.hidden_states, encoded_input['attention_mask'])[0]
 
     hidden_state = hidden_state.cpu()
     hidden_state = hidden_state.unsqueeze(0)
@@ -106,7 +118,7 @@ def process_sentence(input_sentence, prompt):
     # 100 label for no label
     return new_sentence, 100, coords[0]
 
-def sentence_prediction(input_sentence, prompt):
+def process_sentence_detail(input_sentence, prompt):
     """
         return list of embedding objects (sentence, label, umap, topk, attentions)
     """
@@ -167,7 +179,7 @@ def submit():
 
     dataset_name = request.form['dataset']
     model_name = request.form['model']
-    embedding = request.form['embedding']
+    method = request.form['embedding']
     prompt = request.form['inputPrompt']
 
 
@@ -185,7 +197,7 @@ def submit():
         except:
             return jsonify({'error':'model not found'}), 400
 
-    sentence_list, label_list, coords = process_dataset(prompt)
+    sentence_list, label_list, coords = process_dataset(prompt, method)
     final_list = []
     for sentence, label, coord in zip(sentence_list, label_list, coords):
         final_list.append({'sentence': sentence, 'label':label, 'x': float(coord[0]), 'y': float(coord[1])})
@@ -201,9 +213,9 @@ def input_sentence():
 
     input_sentence = request.form['inputSentence']
     prompt = request.form['inputPrompt']
-    embedding = request.form['embedding']
+    method = request.form['embedding']
 
-    sentence, label, coord = process_sentence(input_sentence, prompt)
+    sentence, label, coord = process_sentence(input_sentence, prompt, method)
     
     return jsonify({'embeddings':{'sentence': sentence, 'label':label, 'x': float(coord[0]), 'y': float(coord[1])}}), 200
 
@@ -217,7 +229,7 @@ def sentence_detail():
     input_sentence = request.form['sentence']
     prompt = request.form['prompt']
 
-    topk_list, attentions, input_tokens, prompt_tokens = sentence_prediction(input_sentence, prompt)
+    topk_list, attentions, input_tokens, prompt_tokens = process_sentence_detail(input_sentence, prompt)
     input_len = len(input_tokens)
     prompt_len = len(prompt_tokens)
     attention_results = {"input_tokens": input_tokens, "prompt_tokens": prompt_tokens, "num_layer": len(attentions)}
