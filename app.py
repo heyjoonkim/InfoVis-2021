@@ -4,6 +4,8 @@ from flask import render_template, request, Flask, Response, jsonify
 from datasets import dataset_dict, load_dataset, load_metric
 from utils import sst2_preprocess
 import umap
+from flask_cors import CORS, cross_origin
+
 
 global tokenizer 
 global model
@@ -16,6 +18,11 @@ model = None
 tokenizer = None
 dataset = None
 umap_model = None
+
+# model = AutoModelForMaskedLM.from_pretrained('bert-base-uncased', output_hidden_states=True, output_attentions=True)
+# model.cuda()
+# tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
+# current_model = 'bert-base-uncased'
 
 def mean_pooling(model_output, attention_mask):
     token_embeddings = model_output[0]  # First element of model_output contains all token embeddings
@@ -72,10 +79,37 @@ def process_dataset(prompt):
 
     return sentence_list, label_list, coords
 
+def process_sentence(input_sentence, prompt):
+    """
+        return list of embedding objects (sentence, label, umap, topk, attentions)
+    """
+    global dataset
+    global tokenizer 
+    global model
+    global umap_model
+
+    # preprocess data
+    new_sentence = f'{input_sentence} {prompt}'
+    encoded_input = tokenizer(new_sentence, truncation=True, max_length=128, padding='max_length', return_tensors='pt')
+    mask_position = (encoded_input['input_ids'][0] == tokenizer.mask_token_id).nonzero(as_tuple=True)[0][0]
+
+    # Compute token embeddings
+    with torch.no_grad():
+        # run model
+        encoded_input = {k: v.cuda() for k, v in encoded_input.items()}
+        model_output = model(**encoded_input)
+        hidden_state = model_output.hidden_states[0][0][mask_position]
+
+    hidden_state = hidden_state.cpu()
+    hidden_state = hidden_state.unsqueeze(0)
+    coords = umap_model.transform(hidden_state)
+
+    # -1 label for no label
+    return new_sentence, -1, coords[0]
 
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route('/')
 def home():
@@ -88,7 +122,7 @@ def home():
 @app.route('/submit', methods=['POST'])
 def submit():
     """
-    Process single sentence with prompt
+    Process dataset with prompt
     """
     global dataset
     global tokenizer 
@@ -123,19 +157,19 @@ def submit():
     return jsonify({'embeddings':final_list}), 200
 
 
-# @app.route('/single_sentence', methods=['POST'])
-# def single_sentence():
-#     """
-#     Process single sentence with prompt
-#     """
+@app.route('/input_sentence', methods=['POST'])
+def input_sentence():
+    """
+    Process single sentence with prompt
+    """
 
-#     input_sent = request.form['input_sent']
-#     prompt = request.form['prompt']
-#     method = request.form['method']
+    input_sentence = request.form['inputSentence']
+    prompt = request.form['inputPrompt']
+    embedding = request.form['embedding']
 
-#     emb = get_embeddings(input_sent, prompt, method)
-
-#     return {'embeddings': emb.cpu().tolist()}
+    sentence, label, coord = process_sentence(input_sentence, prompt)
+    
+    return jsonify({'embeddings':{'sentence': sentence, 'label':label, 'x': float(coord[0]), 'y': float(coord[1])}}), 200
 
 
 if __name__ == '__main__':
