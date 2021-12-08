@@ -242,7 +242,7 @@ def sentence_detail():
 
     for idx, l in enumerate(attentions):
         layer_attentions = []
-        for input_pos in range(input_len):
+        for input_pos in range(1, input_len+1):
             for prompt_pos in range(prompt_len):
                 layer_attentions.append({"input_pos":input_pos, 'prompt_pos':prompt_pos, "attn_value": float(l[input_pos][input_pos+prompt_pos])})
         attention_results[str(idx)] = layer_attentions
