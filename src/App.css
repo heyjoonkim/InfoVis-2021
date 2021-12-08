@@ -9,7 +9,7 @@
 
 #scatter_plot{
     width:30%;
-    height:400px;
+    height:420px;
     float:left;
     margin:5px;
     border: 1px solid black;
@@ -17,7 +17,7 @@
 
 #table_plot{
     width:45%;
-    height:400px;
+    height:420px;
     float:left;
     margin:5px;
     border: 1px solid black;
@@ -25,7 +25,7 @@
 
 #input_plot{
     width:25%;
-    height:400px;
+    height:420px;
     float:left;
     margin:5px;
     border: 1px solid black;

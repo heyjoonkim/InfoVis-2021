@@ -83,7 +83,7 @@ const TablePlot = (props) => {
 				options={{
 					toolbar:false,
 					paging:false,
-					maxBodyHeight: 400,
+					maxBodyHeight: 420,
 					rowStyle: (rowData) => ({
 												backgroundColor:
 												props.selectedTableId === rowData.tableData.id ? "#6ABAC9" : "#FFF",
