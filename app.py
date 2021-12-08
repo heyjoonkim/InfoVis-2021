@@ -2,7 +2,7 @@ import torch
 from transformers import AutoTokenizer, AutoModel, AutoModelForMaskedLM
 from flask import render_template, request, Flask, Response, jsonify
 from datasets import dataset_dict, load_dataset, load_metric
-from utils import sst2_preprocess
+from utils import sst2_preprocess, agnew_preprocess
 import umap
 from flask_cors import CORS, cross_origin
 
@@ -37,7 +37,7 @@ def max_pooling(model_output, attention_mask):
     token_embeddings[input_mask_expanded == 0] = -1e9  # Set padding tokens to large negative value
     return torch.max(token_embeddings, 1)[0]
 
-def process_dataset(prompt, method):
+def process_dataset(dataset_name, prompt, method):
     """
         return list of embedding objects (sentence, label, umap, topk, attentions)
     """
@@ -47,7 +47,10 @@ def process_dataset(prompt, method):
     global umap_model
 
     # preprocess data
-    dataset = dataset.map(sst2_preprocess, fn_kwargs={'tokenizer': tokenizer,'prompt':prompt})
+    if dataset_name == 'sst2':
+        dataset = dataset.map(sst2_preprocess, fn_kwargs={'tokenizer': tokenizer,'prompt':prompt})
+    elif dataset_name =='ag_news':
+        dataset = dataset.map(agnew_preprocess, fn_kwargs={'tokenizer': tokenizer,'prompt':prompt})
     # print(dataset['example_with_prompt'])
     sentence_list = dataset['example_with_prompt']
     label_list = dataset['label']
@@ -184,7 +187,10 @@ def submit():
 
 
     try:
-        dataset = load_dataset('glue', dataset_name, split='validation[:100]')
+        if dataset_name == 'sst2':
+            dataset = load_dataset('glue', dataset_name, split='validation[:200]')
+        elif dataset_name == 'ag_news':
+            dataset = load_dataset('ag_news', split='test[:200]')
     except:
         return jsonify({'error':'dataset not found'}), 400
 
@@ -197,7 +203,7 @@ def submit():
         except:
             return jsonify({'error':'model not found'}), 400
 
-    sentence_list, label_list, coords = process_dataset(prompt, method)
+    sentence_list, label_list, coords = process_dataset(dataset_name, prompt, method)
     final_list = []
     for sentence, label, coord in zip(sentence_list, label_list, coords):
         final_list.append({'sentence': sentence, 'label':label, 'x': float(coord[0]), 'y': float(coord[1])})
