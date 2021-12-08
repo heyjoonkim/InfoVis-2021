@@ -41,9 +41,7 @@ const AttentionPlot = (props) => {
 
     function onChange_column(value) {
         var length = value.value.length;
-        console.log('length', length)
         var layer_index = value.value[length - 1];
-        console.log('layer_index', layer_index);
         setLayerIdx(layer_index)
 
         if (props.attentions['attentions'] != null) {
@@ -54,16 +52,11 @@ const AttentionPlot = (props) => {
         }
     }
 
-    /*
-    최초실행시 출력하는 화면
-    */
-
     useEffect(() => {
-        console.log('rerendered')
 
         if (props['attentions'] != null) {
 
-        tableview_columns_generate()
+            tableview_columns_generate()
 
             d3.select(splotSvg.current).selectAll("*").remove()
             var wordLength = Math.max(
@@ -92,16 +85,15 @@ const AttentionPlot = (props) => {
                 return props.attentions['attentions']['prompt_tokens'][index];
             }).tickSize(0);
 
-
-            const yAxis = d3.axisLeft(yScale)
-
             const svg = d3.select(splotSvg.current)
             const lines_svg = d3.select(splotSvg.current).append('g').attr('transform', `translate( ${100}, ${0})`)
 
             svg.append('g')
+                .attr('class', 'xaxis')
                 .attr('transform', `translate(${100}, ${0})`)
                 .call(xAxis_top).attr('stroke-width', 0)
             svg.append('g')
+                .attr('class', 'yaxis')
                 .attr('transform', `translate( ${100}, ${200})`)
                 .call(xAxis_bot).attr('stroke-width', 0)
 
@@ -111,19 +103,22 @@ const AttentionPlot = (props) => {
                 .enter()
                 .append('line')
                 .attr("stroke", "red")
-                .attr('stroke-width', d => d.attn_value)
+                .attr('stroke-width', d => d.attn_value*10)
                 .attr("x1", d => xScale_top((d.input_pos * interval)))
                 .attr("x2", d => xScale_bot((d.prompt_pos * interval)))
                 .attr("y1", yScale(fixed_height))
                 .attr("y2", yScale(0));
 
 
+        } else {
+            const svg = d3.select(splotSvg.current);
+            svg.select('.xaxis').remove();
+            svg.select('.yaxis').remove();
+            svg.selectAll('line').remove();
+
         }
 
-        console.log('@@ DONE @@');
-
     }, [props.attentions,data]);
-
 
     return (
         <div>
@@ -131,7 +126,7 @@ const AttentionPlot = (props) => {
                 <div id="container" style={{ padding: "2%" }}>
                     <b>Attention Map</b>
                 </div>
-                <div style={{ padding: "2%", paddingTop: "0%", width: "30%" }}>
+                <div style={{ padding: "2%", paddingTop: "0%", width: "20%" }}>
                     <Select
                         options={tableview_columns}
                         onChange={onChange_column}

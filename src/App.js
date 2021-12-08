@@ -7,16 +7,16 @@ import "./App.css";
 
 function App() {
 
-  const dataset = ["SST-2", "RTE"];
+  const dataset = ["sst2", "ag_news"];
   const model = ["bert-base-uncased", "albert-xxlarge-v2"];
   const embedding  = ['mask', 'cls', 'mean', 'max'];
-  const host='localhost'
+  // TODO : fix domain
+  const host='http://titania.snu.ac.kr:8888'
 
   return (
     <div className="App">
       <div class="splotContainer">
         <Mainplot
-          // TODO : fix
           data={dummy}
           dataset={dataset}
           model={model}

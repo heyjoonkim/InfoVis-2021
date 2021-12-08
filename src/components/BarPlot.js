@@ -1,13 +1,12 @@
-import React, { useRef, useState, useEffect} from "react";
+import React, { useRef, useEffect} from "react";
 import * as d3 from "d3";
 import "../App.css";
-import { yieldExpression } from "@babel/types";
 
 const BarPlot = (props) => {
 
     const barPlot = useRef(null);
     
-    var margin = {top: 30, right: 30, bottom: 70, left: 60}
+    var margin = {top: 50, right: 30, bottom: 70, left: 60}
         var width = 580;
         var height = 210;
     
@@ -30,8 +29,6 @@ const BarPlot = (props) => {
             }]
         }
 
-        console.log(props.data , data);
-
         var svg = d3.select(barPlot.current)
                     //.append("g")
                     //.attr("transform", `translate(${margin.left}, ${margin.top})`);
@@ -53,7 +50,10 @@ const BarPlot = (props) => {
         const yScale = d3.axisLeft(y);
         
         if(props.data == null) {
-            console.log('NULL')
+            svg.select('.xaxis').remove();
+            svg.select('.yaxis').remove();
+            svg.selectAll('rect').remove();
+
             svg.append("g")
                 .attr("transform", `translate(${margin.left}, ${margin.top + height})`)
                 .attr('class', 'xaxis')
@@ -66,6 +66,8 @@ const BarPlot = (props) => {
                 .attr("transform", `translate(${margin.left}, ${margin.top})`)
                 .attr('class', 'yaxis')
                 .call(yScale);
+
+            
 
         } else {
             svg.select('.xaxis')
@@ -96,8 +98,14 @@ const BarPlot = (props) => {
     }, [props.data]);
 
     return (
-        <div id="svg_contrainer" style={{alignItems:"center", justifyContent:"center", height:"310px"}}>
-            <svg id="barPlot" ref={barPlot} width={width + margin.left + margin.right} height={height + margin.top + margin.bottom}/>
+        <div>
+            <div id="container" style={{ padding: "2%" }}>
+                        <b>Top-10 Prediction</b>
+                </div>
+            <div id="svg_container" style={{alignItems:"center", justifyContent:"center", height:"310px"}}>
+                
+                <svg id="barPlot" ref={barPlot} width={width + margin.left + margin.right} height={height + margin.top + margin.bottom}/>
+            </div>
         </div>
 	)
 };
