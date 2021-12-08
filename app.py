@@ -144,7 +144,7 @@ def process_sentence_detail(input_sentence, prompt):
         tk = torch.topk(probs,10,0)
         topk_list = []
         for prob, ids in zip(tk.values.cpu(), tk.indices.cpu()):
-            topk_list.append({tokenizer.decode(ids): float(prob)})
+            topk_list.append({'token':tokenizer.decode(ids), 'score': float(prob)})
 
         # mean attention
         attentions = model_output.attentions
