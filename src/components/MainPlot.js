@@ -10,9 +10,10 @@ import BarPlot from "./BarPlot";
 const Mainplot = (props) => {
 
 	const splotSvg = useRef(null);
+	const svgLegend = useRef(null);
     const size = 300;
     const circleSize = 5;
-    const margin = 20;
+    const margin = 40;
     const colorList = d3.schemeTableau10;
     
     // for scatter plot & table
@@ -28,6 +29,7 @@ const Mainplot = (props) => {
     */
     useEffect(() => {
         const splot = d3.select(splotSvg.current);
+        const legend = d3.select(svgLegend.current);
         // set of labels
         var labelSet = new Set();
         // make data
@@ -97,6 +99,31 @@ const Mainplot = (props) => {
                     return 0.1;
                 }
             });
+
+        
+        
+        var labelLength = labelList.length;
+        // remove previous legends
+        legend.selectAll("circle").remove();
+        legend.selectAll("text").remove();
+        legend.selectAll("rect").remove();
+        legend.append('rect')
+                .attr("x", 350)
+                .attr("y", 55)
+                .attr("width", 100)
+                .attr("height", 20 + 30 * labelLength)
+                .style("fill", "#EAEAEA");
+
+        for(var labelIndex = 0; labelIndex < labelLength; labelIndex++) {
+            var label = labelList[labelIndex];
+            var labelColor = colorList[labelIndex]
+            legend.append("circle").attr("cx",size+margin*2).attr("cy",margin*2+labelIndex*30).attr("r", 6).style("fill", labelColor)
+            legend.append("text").attr("x", size+15+margin*2).attr("y", margin*2+labelIndex*30).text(label).style("font-size", "15px").attr("alignment-baseline","middle")
+        }
+
+        //var tmp = splot.select("#legend");
+        //tmp.style("stroke", "black")
+                //.style("")
         
         // selected data
         if(selectedData != null) {
@@ -115,6 +142,7 @@ const Mainplot = (props) => {
             <div id="container">
                 <div id="scatter_plot">
                     <svg ref={splotSvg} width={size+margin+100} height={size+margin + 100}>
+                        <svg id="legend" ref={svgLegend}/>
                     </svg>
                 </div>
                 <div id="table_plot">
