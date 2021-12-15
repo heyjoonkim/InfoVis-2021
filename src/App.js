@@ -8,7 +8,7 @@ import "./App.css";
 function App() {
 
   const dataset = ["sst2", "ag_news"];
-  const model = ["bert-base-cased", "oberta-base"];
+  const model = ["bert-base-cased", "roberta-base"];
   const embedding  = ['mask', 'cls', 'mean', 'max'];
   // TODO : fix domain
   const host='http://kari.snu.ac.kr:9999'
