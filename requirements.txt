@@ -3,3 +3,4 @@ flask
 transformers
 datasets
 umap-learn
+flask_cors

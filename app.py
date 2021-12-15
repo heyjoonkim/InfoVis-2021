@@ -12,12 +12,14 @@ global model
 global dataset
 global current_model
 global umap_model
+global label_names
 
 current_model = None
 model = None
 tokenizer = None
 dataset = None
 umap_model = None
+label_names = None
 
 model = AutoModelForMaskedLM.from_pretrained('bert-base-uncased', output_hidden_states=True, output_attentions=True)
 model.cuda()
@@ -56,7 +58,7 @@ def process_dataset(dataset_name, prompt, method):
     label_list = dataset['label']
     dataset.set_format(type='torch', columns=['input_ids', 'token_type_ids', 'attention_mask', 'mask_position'])
     # dataloader
-    dataloader = torch.utils.data.DataLoader(dataset, batch_size=20)
+    dataloader = torch.utils.data.DataLoader(dataset, batch_size=10)
     data_list = []
     # Compute token embeddings
     with torch.no_grad():
@@ -105,6 +107,7 @@ def process_sentence(input_sentence, prompt, method):
         # run model
         encoded_input = {k: v.cuda() for k, v in encoded_input.items()}
         model_output = model(**encoded_input)
+        print(method)
         if method == 'mask':
             hidden_state = model_output.hidden_states[0][0][mask_position]
         elif method == 'cls':
@@ -119,7 +122,7 @@ def process_sentence(input_sentence, prompt, method):
     coords = umap_model.transform(hidden_state)
 
     # 100 label for no label
-    return new_sentence, 100, coords[0]
+    return new_sentence, 0, coords[0]
 
 def process_sentence_detail(input_sentence, prompt):
     """
@@ -130,7 +133,7 @@ def process_sentence_detail(input_sentence, prompt):
 
     # preprocess data
     new_sentence = f'{input_sentence} {prompt}'
-    encoded_input = tokenizer(new_sentence, truncation=True, max_length=128, padding='max_length', return_tensors='pt')
+    encoded_input = tokenizer(new_sentence, truncation=True, max_length=512, padding='max_length', return_tensors='pt')
     mask_position = (encoded_input['input_ids'][0] == tokenizer.mask_token_id).nonzero(as_tuple=True)[0][0]
 
     # Compute token embeddings
@@ -179,6 +182,7 @@ def submit():
     global tokenizer 
     global model
     global current_model
+    global label_names
 
     dataset_name = request.form['dataset']
     model_name = request.form['model']
@@ -191,6 +195,7 @@ def submit():
             dataset = load_dataset('glue', dataset_name, split='validation[:200]')
         elif dataset_name == 'ag_news':
             dataset = load_dataset('ag_news', split='test[:200]')
+        label_names = dataset.features['label'].names
     except:
         return jsonify({'error':'dataset not found'}), 400
 
@@ -206,7 +211,7 @@ def submit():
     sentence_list, label_list, coords = process_dataset(dataset_name, prompt, method)
     final_list = []
     for sentence, label, coord in zip(sentence_list, label_list, coords):
-        final_list.append({'sentence': sentence, 'label':label, 'x': float(coord[0]), 'y': float(coord[1])})
+        final_list.append({'sentence': sentence, 'label':label_names[label], 'x': float(coord[0]), 'y': float(coord[1])})
 
     return jsonify({'embeddings':final_list}), 200
 
@@ -216,14 +221,14 @@ def input_sentence():
     """
     Process single sentence with prompt
     """
-
+    global label_names
     input_sentence = request.form['inputSentence']
     prompt = request.form['inputPrompt']
     method = request.form['embedding']
 
     sentence, label, coord = process_sentence(input_sentence, prompt, method)
-    
-    return jsonify({'embeddings':{'sentence': sentence, 'label':label, 'x': float(coord[0]), 'y': float(coord[1])}}), 200
+
+    return jsonify({'embeddings':{'sentence': sentence, 'label':'user input', 'x': float(coord[0]), 'y': float(coord[1])}}), 200
 
 
 @app.route('/sentence_detail', methods=['POST'])
