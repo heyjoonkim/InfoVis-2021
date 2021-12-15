@@ -8,7 +8,7 @@ import "./App.css";
 function App() {
 
   const dataset = ["sst2", "ag_news"];
-  const model = ["bert-base-uncased", "albert-xxlarge-v2"];
+  const model = ["roberta-base", "albert-xxlarge-v2"];
   const embedding  = ['mask', 'cls', 'mean', 'max'];
   // TODO : fix domain
   const host='http://titania.snu.ac.kr:9999'

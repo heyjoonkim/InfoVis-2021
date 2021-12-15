@@ -36,13 +36,14 @@ const Mainplot = (props) => {
         embeddingsData.forEach(d => {
             d.x = parseFloat(d["x"]);
             d.y = parseFloat(d["y"]);
-            d.label = parseInt(d["label"]);
+            d.label = d["label"];
 
             labelSet.add(d.label);
         });
 
         // list of labels
         var labelList = Array.from(labelSet);
+        console.log('labelList', labelList)
 
         // scatter plot x-scale
         let xScale = d3.scaleLinear()
@@ -75,6 +76,7 @@ const Mainplot = (props) => {
             .style("fill", (d, i) => {
                 
                 if(selectedData === null) {
+                    console.log(d.label, colorList[labelList.indexOf(d.label)])
                     return colorList[labelList.indexOf(d.label)];
                 }
 
@@ -108,17 +110,18 @@ const Mainplot = (props) => {
         legend.selectAll("text").remove();
         legend.selectAll("rect").remove();
         legend.append('rect')
-                .attr("x", 350)
+                .attr("x", 340)
                 .attr("y", 55)
-                .attr("width", 100)
+                .attr("width", 120)
                 .attr("height", 20 + 30 * labelLength)
-                .style("fill", "#EAEAEA");
+                .style("fill", "#EAEAEA")
+                .attr('fill-opacity', 0.5);
 
         for(var labelIndex = 0; labelIndex < labelLength; labelIndex++) {
             var label = labelList[labelIndex];
             var labelColor = colorList[labelIndex]
-            legend.append("circle").attr("cx",size+margin*2).attr("cy",margin*2+labelIndex*30).attr("r", 6).style("fill", labelColor)
-            legend.append("text").attr("x", size+15+margin*2).attr("y", margin*2+labelIndex*30).text(label).style("font-size", "15px").attr("alignment-baseline","middle")
+            legend.append("circle").attr("cx",360).attr("cy",margin*2+labelIndex*30).attr("r", 6).style("fill", labelColor).attr('fill-opacity', 0.5)
+            legend.append("text").attr("x", 375).attr("y", margin*2+labelIndex*30).text(label).style("font-size", "15px").attr("alignment-baseline","middle")
         }
 
         //var tmp = splot.select("#legend");
