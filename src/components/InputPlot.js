@@ -79,8 +79,6 @@ const InputPlot = (props) => {
         formData.append("embedding" , selectedMask.current);
         formData.append("inputPrompt" , inputPrompt);
 
-
-        // TODO : add logics -> sent inputSentence, inputPrompt to server
         axios.post(url, formData)
             .then(function (response) {
                 //check for embeddings data                        
@@ -111,11 +109,10 @@ const InputPlot = (props) => {
         }
 
         var formData = new FormData();
-        formData.append("embedding" , selectedMask);
+        formData.append("embedding" , selectedMask.current);
         formData.append("inputPrompt" , inputPrompt);
         formData.append("inputSentence" , inputSentence);
 
-        // TODO : add logics -> sent inputSentence, inputPrompt to server
         axios.post(url, formData)
             .then(function (response) {
                 //check for embeddings data                     

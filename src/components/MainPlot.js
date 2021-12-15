@@ -10,9 +10,10 @@ import BarPlot from "./BarPlot";
 const Mainplot = (props) => {
 
 	const splotSvg = useRef(null);
+	const svgLegend = useRef(null);
     const size = 300;
     const circleSize = 5;
-    const margin = 20;
+    const margin = 40;
     const colorList = d3.schemeTableau10;
     
     // for scatter plot & table
@@ -28,19 +29,21 @@ const Mainplot = (props) => {
     */
     useEffect(() => {
         const splot = d3.select(splotSvg.current);
+        const legend = d3.select(svgLegend.current);
         // set of labels
         var labelSet = new Set();
         // make data
         embeddingsData.forEach(d => {
             d.x = parseFloat(d["x"]);
             d.y = parseFloat(d["y"]);
-            d.label = parseInt(d["label"]);
+            d.label = d["label"];
 
             labelSet.add(d.label);
         });
 
         // list of labels
         var labelList = Array.from(labelSet);
+        console.log('labelList', labelList)
 
         // scatter plot x-scale
         let xScale = d3.scaleLinear()
@@ -73,6 +76,7 @@ const Mainplot = (props) => {
             .style("fill", (d, i) => {
                 
                 if(selectedData === null) {
+                    console.log(d.label, colorList[labelList.indexOf(d.label)])
                     return colorList[labelList.indexOf(d.label)];
                 }
 
@@ -97,6 +101,32 @@ const Mainplot = (props) => {
                     return 0.1;
                 }
             });
+
+        
+        
+        var labelLength = labelList.length;
+        // remove previous legends
+        legend.selectAll("circle").remove();
+        legend.selectAll("text").remove();
+        legend.selectAll("rect").remove();
+        legend.append('rect')
+                .attr("x", 340)
+                .attr("y", 55)
+                .attr("width", 120)
+                .attr("height", 20 + 30 * labelLength)
+                .style("fill", "#EAEAEA")
+                .attr('fill-opacity', 0.5);
+
+        for(var labelIndex = 0; labelIndex < labelLength; labelIndex++) {
+            var label = labelList[labelIndex];
+            var labelColor = colorList[labelIndex]
+            legend.append("circle").attr("cx",360).attr("cy",margin*2+labelIndex*30).attr("r", 6).style("fill", labelColor).attr('fill-opacity', 0.5)
+            legend.append("text").attr("x", 375).attr("y", margin*2+labelIndex*30).text(label).style("font-size", "15px").attr("alignment-baseline","middle")
+        }
+
+        //var tmp = splot.select("#legend");
+        //tmp.style("stroke", "black")
+                //.style("")
         
         // selected data
         if(selectedData != null) {
@@ -115,6 +145,7 @@ const Mainplot = (props) => {
             <div id="container">
                 <div id="scatter_plot">
                     <svg ref={splotSvg} width={size+margin+100} height={size+margin + 100}>
+                        <svg id="legend" ref={svgLegend}/>
                     </svg>
                 </div>
                 <div id="table_plot">
