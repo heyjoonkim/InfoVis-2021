@@ -28,8 +28,9 @@ yarn start
 6. 새로운 모델의 임베딩을 확인하기 위해서는 우측의 Model을 변경 후 [Apply Filter] 를 클릭하면 됩니다.
 7. 새로운 임베딩 방식을 사용하기 위해서는 우측의 Embedding을 변경 후 [Apply Filter] 를 클릭하면 됩니다.
 8. 새로운 Prompt를 적용하기 위해서는 우측의 Prompt를 새로 입력 후 [Apply Filter] 를 클릭하면 됩니다.
-9. 5~8번의 필터는 모두 동시에 적용이 가능합니다.
-10. 사용자가 지정한 문장을 함께 적용하기 위해서는 우측의 Input Sentence를 입력 후 [Submit New Sentence]를 클릭하면 됩니다.
+    - <b>[중요!!!] bert-base-cased를 사용하는 경우 <code>[MASK]</code>, roberta-base를 사용하는 경우는 <code>	&lt;mask&gt;</code> 를 prompt에 반드시!!! 추가해주셔야 합니다. </b>
+10. 5~8번의 필터는 모두 동시에 적용이 가능합니다.
+11. 사용자가 지정한 문장을 함께 적용하기 위해서는 우측의 Input Sentence를 입력 후 [Submit New Sentence]를 클릭하면 됩니다.
 
 
 ### 주의 사항
