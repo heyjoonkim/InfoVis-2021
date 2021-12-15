@@ -56,7 +56,10 @@ def process_dataset(dataset_name, prompt, method):
     # print(dataset['example_with_prompt'])
     sentence_list = dataset['example_with_prompt']
     label_list = dataset['label']
-    dataset.set_format(type='torch', columns=['input_ids', 'token_type_ids', 'attention_mask', 'mask_position'])
+    if current_model == 'bert-base-uncased':
+        dataset.set_format(type='torch', columns=['input_ids', 'token_type_ids', 'attention_mask', 'mask_position'])
+    else:
+        dataset.set_format(type='torch', columns=['input_ids', 'attention_mask', 'mask_position'])
     # dataloader
     dataloader = torch.utils.data.DataLoader(dataset, batch_size=10)
     data_list = []
@@ -107,7 +110,6 @@ def process_sentence(input_sentence, prompt, method):
         # run model
         encoded_input = {k: v.cuda() for k, v in encoded_input.items()}
         model_output = model(**encoded_input)
-        print(method)
         if method == 'mask':
             hidden_state = model_output.hidden_states[0][0][mask_position]
         elif method == 'cls':
