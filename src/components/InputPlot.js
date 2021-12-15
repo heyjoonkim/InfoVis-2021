@@ -67,10 +67,7 @@ const InputPlot = (props) => {
         var url = props.host + '/submit';
         var inputPrompt = document.getElementById("inputPrompt").value;
 
-        if(!inputPrompt.includes('[MASK]')) {
-            alert('ERROR! Prompt must contain a [MASK] token. (e.g., This is a [MASK] movie.)');
-            return;
-        }
+        
         props.setPrompt(inputPrompt);
 
         var formData = new FormData();
